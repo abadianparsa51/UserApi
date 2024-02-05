@@ -37,9 +37,7 @@ namespace UserApi.Controllers
         }
         [HttpPost]
         [Route("Register")]
-
-        public async Task<IActionResult> Register([FromBody]
-        UserRegistrationRequestDto requestDto)
+        public async Task<IActionResult> Register([FromBody] UserRegistrationRequestDto requestDto)
         {
             // Check if the request is valid
             if (!ModelState.IsValid)
@@ -69,11 +67,15 @@ namespace UserApi.Controllers
                 // If the user is created successfully, generate a JWT token
                 var token = GenerateJwtToken(newUser);
 
-                // Return a success response with the token
+                // Retrieve the user ID
+                var userId = newUser.Id;
+
+                // Return a success response with the token and user ID
                 var response = new RegistrationRequestResponse
                 {
                     Result = true,
                     Token = token,
+                    UserId = userId
                 };
 
                 return Ok(response);
@@ -83,36 +85,43 @@ namespace UserApi.Controllers
             var errors = string.Join(", ", isCreated.Errors.Select(e => e.Description));
             return BadRequest($"Error creating user. Errors: {errors}");
         }
+
         [HttpPost]
         [Route("Login")]
         public async Task<IActionResult> Login([FromBody] UserLoginRequestDto requestDto)
         {
-            if (ModelState.IsValid) {
+            if (ModelState.IsValid)
+            {
                 var existUser = await _userManager.FindByEmailAsync(requestDto.Email);
 
                 if (existUser == null)
-                
-                    return BadRequest("invalid auth");
+                    return BadRequest("Invalid authentication.");
 
                 var isPasswordValid = await _userManager.CheckPasswordAsync(existUser, requestDto.Password);
-                    if (isPasswordValid)
+                if (isPasswordValid)
                 {
+                    // Retrieve the user ID
+                    var userId = existUser.Id;
+
+                    // Generate JWT token
                     var token = GenerateJwtToken(existUser);
 
                     return Ok(new LoginRequestResponse()
                     {
                         Token = token,
+                        UserId = userId,
                         Result = true,
                     });
-
                 }
-                return BadRequest("Invalid email or password.");
 
+                return BadRequest("Invalid email or password.");
             }
 
             return BadRequest("Invalid email or password.");
         }
-    
+
+
+
         private string GenerateJwtToken( IdentityUser user)
         {
             var jwtTokenHandler = new JwtSecurityTokenHandler();

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
@@ -9,6 +11,7 @@ namespace UserApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class CardDetailController : ControllerBase
     {
         private readonly ApiDbContext _context;
@@ -53,7 +56,8 @@ namespace UserApi.Controllers
             _context.CardDetails.Add(cardDetail);
             await _context.SaveChangesAsync();
 
-            return Ok(await _context.CardDetails.ToListAsync());
+            return Ok(cardDetail); // Return the created cardDetail
         }
+
     }
 }
