@@ -112,17 +112,7 @@ namespace UserApi.Controllers
 
             return BadRequest("Invalid email or password.");
         }
-        [HttpPost("signout")]
-        [Authorize] // Only authenticated users can sign out
-        public async Task<IActionResult> SignOut()
-        {
-            // Sign the user out (based on your authentication scheme)
-            await HttpContext.SignOutAsync(JwtBearerDefaults.AuthenticationScheme);
-
-            // Optionally, perform additional sign-out logic
-
-            return Ok(new { message = "Successfully signed out." });
-        }
+    
         private string GenerateJwtToken( IdentityUser user)
         {
             var jwtTokenHandler = new JwtSecurityTokenHandler();
@@ -148,5 +138,32 @@ namespace UserApi.Controllers
             var jwtToken = jwtTokenHandler.WriteToken(token);
             return jwtToken;
         }
+
+        [HttpGet]
+        [Route("UserDetails")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public IActionResult GetUserDetails()
+        {
+            // Get user details from claims
+            var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
+            
+
+            if (userEmail != null)
+            {
+                var userDetails = new UserLoginRequestDto // Assuming you have a UserDetails model class
+                {
+                    Email = userEmail,
+            
+                };
+
+                return Ok(userDetails);
+            }
+            else
+            {
+                return BadRequest("User details not found.");
+            }
+        }
     }
-}
+   }
+
+

@@ -12,15 +12,15 @@ using UserApi.Data;
 namespace UserApi.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20240127142245_sample")]
-    partial class sample
+    [Migration("20240205121215_AddUserRelationshipToCardtDetail")]
+    partial class AddUserRelationshipToCardtDetail
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "8.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -227,25 +227,29 @@ namespace UserApi.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("UserApi.Models.ProductDetail", b =>
+            modelBuilder.Entity("UserApi.Models.CardDetail", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("CardDetailId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CardDetailId"));
 
-                    b.Property<string>("ProductName")
+                    b.Property<string>("CardNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(16)");
 
-                    b.Property<string>("ProductPrice")
+                    b.Property<string>("ExpirationDate")
                         .IsRequired()
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(5)");
 
-                    b.HasKey("ProductId");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("ProductDetails");
+                    b.HasKey("CardDetailId");
+
+                    b.ToTable("CardtDetails");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

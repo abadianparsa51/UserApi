@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "K6T7UCMRV8lMmH7uWlz1JJI0wNfZLPLsrU5FmKOzxc0gzzeNuadLY4ZA6bivbrb9CVxtDrGiu318XzYe8K1P8A==",
+  "dgSpecHash": "a9/5+xS6U7YFH0A9xpPhiWCVtHOllCbXkjGietKZSTujfJhsHPDs03vzEnWIcOEd+wxT/F3CNmX2Dx9dpw1xdg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Parsa\\Desktop\\learning\\UserApi\\UserApi\\UserApi.csproj",
   "expectedPackageFiles": [
@@ -95,6 +95,7 @@
     "C:\\Users\\Parsa\\.nuget\\packages\\microsoft.entityframeworkcore.design\\8.0.0\\microsoft.entityframeworkcore.design.8.0.0.nupkg.sha512",
     "C:\\Users\\Parsa\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\8.0.0\\microsoft.entityframeworkcore.relational.8.0.0.nupkg.sha512",
     "C:\\Users\\Parsa\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\8.0.0\\microsoft.entityframeworkcore.sqlserver.8.0.0.nupkg.sha512",
+    "C:\\Users\\Parsa\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\8.0.0\\microsoft.entityframeworkcore.tools.8.0.0.nupkg.sha512",
     "C:\\Users\\Parsa\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\Parsa\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\8.0.0\\microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\Parsa\\.nuget\\packages\\microsoft.extensions.caching.memory\\8.0.0\\microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",

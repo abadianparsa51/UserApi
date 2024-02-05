@@ -6,7 +6,7 @@ namespace UserApi.Data
 {
     public class ApiDbContext : IdentityDbContext
     {
-        public DbSet<ProductDetail> ProductDetails { get; set; } // Corrected the property name
+        public DbSet<CardDetail> CardDetails { get; set; }
 
         public ApiDbContext(DbContextOptions<ApiDbContext> options)
             : base(options)
@@ -16,6 +16,7 @@ namespace UserApi.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+          
         }
     }
 }

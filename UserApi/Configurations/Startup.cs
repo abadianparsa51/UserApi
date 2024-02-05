@@ -44,6 +44,7 @@ namespace YourNamespace.Configuration
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(jwt =>
             {
+
                 var secretValue = Configuration["JwtConfig:Secret"];
 
                 if (string.IsNullOrEmpty(secretValue))
@@ -52,7 +53,7 @@ namespace YourNamespace.Configuration
                 }
 
                 var key = Encoding.ASCII.GetBytes(secretValue);
-
+                jwt.RequireHttpsMetadata = false;
                 jwt.SaveToken = true;
                 jwt.TokenValidationParameters = new TokenValidationParameters()
                 {
@@ -87,15 +88,16 @@ namespace YourNamespace.Configuration
             }
 
             app.UseHttpsRedirection();
-            app.UseAuthentication();
-            app.UseAuthorization();
+            app.UseRouting();
+            app.UseAuthentication(); // Place this middleware after UseRouting()
+            app.UseAuthorization(); // Place this middleware after UseAuthentication()
             app.UseCors();
 
-            app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
         }
+
     }
 }

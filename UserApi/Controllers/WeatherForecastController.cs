@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace UserApi.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
+
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]

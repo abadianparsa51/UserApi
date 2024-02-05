@@ -264,3 +264,4 @@ C:\Users\Parsa\Desktop\learning\UserApi\UserApi\bin\Debug\net8.0\Microsoft.AspNe
 C:\Users\Parsa\Desktop\learning\UserApi\UserApi\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
 C:\Users\Parsa\Desktop\learning\UserApi\UserApi\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 C:\Users\Parsa\Desktop\learning\UserApi\UserApi\bin\Debug\net8.0\Microsoft.JSInterop.dll
+C:\Users\Parsa\Desktop\learning\UserApi\UserApi\obj\Debug\net8.0\UserApi.sourcelink.json
