@@ -3,7 +3,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -20,45 +23,73 @@ namespace UserApi.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApiDbContext _context;
-        public CardDetailController(UserManager<ApplicationUser> userManager, ApiDbContext context)
+        private readonly ILogger<CardDetailController> _logger;
+
+        public CardDetailController(UserManager<ApplicationUser> userManager, 
+                                    ApiDbContext context,
+                                    ILogger<CardDetailController> logger)
         {
             _userManager = userManager;
             _context = context;
+            _logger = logger;
         }
+
         [HttpPost("add")]
         public async Task<IActionResult> AddCard([FromBody] CardDetailDto cardDetailDto)
         {
-            var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
-            var user = await _userManager.FindByEmailAsync(userEmail);
-
-            if (user == null)
-                return BadRequest("User not found.");
-
-            var card = new CardDetail
+            try
             {
-                CardNumber = cardDetailDto.CardNumber,
-                ExpirationDate = cardDetailDto.ExpirationDate,
-                UserId = user.Id
-            };
+                var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
+                var user = await _userManager.FindByEmailAsync(userEmail);
 
-            _context.CardDetails.Add(card);
-            await _context.SaveChangesAsync();
+                if (user == null)
+                    return BadRequest("User not found.");
 
-            return Ok("Card added successfully.");
+                var card = new CardDetail
+                {
+                    CardNumber = cardDetailDto.CardNumber,
+                    ExpirationDate = cardDetailDto.ExpirationDate,
+                    UserId = user.Id
+                };
+
+                _context.CardDetails.Add(card);
+                await _context.SaveChangesAsync();
+
+                // After adding the card successfully, retrieve all cards for the user
+                var userCards = await GetUserCards(user.Id);
+
+                // Create a custom response object containing the user ID and card details
+                var response = new
+                {
+                    UserId = user.Id,
+                    Cards = userCards
+                };
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while adding a card.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error.");
+            }
         }
 
         [HttpGet("user-cards")]
-        public async Task<IActionResult> GetUserCards()
+        public async Task<ActionResult<IEnumerable<CardDetail>>> GetUserCards(string userId)
         {
-            var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
-            var user = await _userManager.FindByEmailAsync(userEmail);
+            try
+            {
+                var userCards = await _context.CardDetails
+                    .Where(c => c.UserId == userId)
+                    .ToListAsync();
 
-            if (user == null)
-                return BadRequest("User not found.");
-
-            var userCards = _context.CardDetails.Where(c => c.UserId == user.Id).ToList();
-            return Ok(userCards);
+                return Ok(userCards);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while retrieving user cards.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error.");
+            }
         }
     }
 }
- 

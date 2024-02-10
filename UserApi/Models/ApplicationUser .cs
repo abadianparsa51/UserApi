@@ -7,3 +7,4 @@ namespace UserApi.Models
         public ICollection<CardDetail> Cards { get; set; }
     }
 }
+ 
