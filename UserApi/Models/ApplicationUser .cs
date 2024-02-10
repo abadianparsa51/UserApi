@@ -2,8 +2,8 @@
 
 namespace UserApi.Models
 {
-    public class ApplicationUser :IdentityUser
+    public class ApplicationUser : IdentityUser
     {
-        public required ICollection<CardDetail> CardDetails { get; set; }
+        public ICollection<CardDetail> Cards { get; set; }
     }
 }

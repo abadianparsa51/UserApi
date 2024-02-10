@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.JSInterop;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -21,15 +18,15 @@ namespace UserApi.Controllers
     public class AuthManagementController : ControllerBase
     {
         private readonly ILogger<AuthManagementController> _logger;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly JwtConfig _jwtConfig;
 
 
-         public AuthManagementController(
-             ILogger<AuthManagementController> logger,
-             UserManager<IdentityUser>userManager,
-             IOptionsMonitor<JwtConfig>optionsMonitor
-             )
+        public AuthManagementController(
+            ILogger<AuthManagementController> logger,
+            UserManager<ApplicationUser> userManager,
+            IOptionsMonitor<JwtConfig> optionsMonitor
+            )
         {
             _logger = logger;
             _userManager = userManager;
@@ -53,7 +50,7 @@ namespace UserApi.Controllers
             }
 
             // Create a new user
-            var newUser = new IdentityUser
+            var newUser = new ApplicationUser
             {
                 UserName = requestDto.Email,
                 Email = requestDto.Email,
@@ -75,7 +72,7 @@ namespace UserApi.Controllers
                 {
                     Result = true,
                     Token = token,
-                    UserId = userId
+              
                 };
 
                 return Ok(response);
@@ -109,7 +106,7 @@ namespace UserApi.Controllers
                     return Ok(new LoginRequestResponse()
                     {
                         Token = token,
-                        UserId = userId,
+                        
                         Result = true,
                     });
                 }
@@ -122,7 +119,7 @@ namespace UserApi.Controllers
 
 
 
-        private string GenerateJwtToken( IdentityUser user)
+        private string GenerateJwtToken(IdentityUser user)
         {
             var jwtTokenHandler = new JwtSecurityTokenHandler();
 
@@ -155,14 +152,14 @@ namespace UserApi.Controllers
         {
             // Get user details from claims
             var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
-            
+
 
             if (userEmail != null)
             {
                 var userDetails = new UserLoginRequestDto // Assuming you have a UserDetails model class
                 {
                     Email = userEmail,
-            
+
                 };
 
                 return Ok(userDetails);
@@ -173,6 +170,4 @@ namespace UserApi.Controllers
             }
         }
     }
-   }
-
-
+}
