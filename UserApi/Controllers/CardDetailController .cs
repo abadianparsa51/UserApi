@@ -91,5 +91,52 @@ namespace UserApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error.");
             }
         }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCard(int id)
+        {
+            try
+            {
+                var card = await _context.CardDetails.FindAsync(id);
+
+                if (card == null)
+                    return NotFound("Card not found.");
+
+                _context.CardDetails.Remove(card);
+                await _context.SaveChangesAsync();
+
+                return Ok("Card deleted successfully.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while deleting the card.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error.");
+            }
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateCard(int id, [FromBody] CardDetailDto updatedCardDto)
+        {
+            try
+            {
+                var card = await _context.CardDetails.FindAsync(id);
+
+                if (card == null)
+                    return NotFound("Card not found.");
+
+                card.CardNumber = updatedCardDto.CardNumber;
+                card.ExpirationDate = updatedCardDto.ExpirationDate;
+
+                _context.CardDetails.Update(card);
+                await _context.SaveChangesAsync();
+
+                return Ok("Card updated successfully.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while updating the card.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error.");
+            }
+        }
+
+
     }
 }

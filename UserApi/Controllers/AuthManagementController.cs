@@ -102,6 +102,15 @@ namespace UserApi.Controllers
 
                     // Generate JWT token
                     var token = GenerateJwtToken(existUser);
+                    // Return login response with user ID
+                    var loginResponse = new LoginRequestResponse()
+                    {
+                        Token = token,
+                        UserId = userId,
+                        Result = true,
+                    };
+
+                    return Ok(loginResponse);
 
                     return Ok(new LoginRequestResponse()
                     {

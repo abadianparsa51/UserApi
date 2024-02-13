@@ -9,7 +9,7 @@ namespace UserApi.Models
         public int Id { get; set; }
         [Column(TypeName = "nvarchar(16)")]
         public string CardNumber { get; set; } = "";
-        [Column(TypeName = "nvarchar(5)")]
+        [MaxLength(10)]
         public string ExpirationDate { get; set; } = "";
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }

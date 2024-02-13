@@ -22,6 +22,12 @@ namespace UserApi.Data
                 .WithMany(u => u.Cards)        // Each user can have many cards
                 .HasForeignKey(c => c.UserId)  // Foreign key property in Card
                 .IsRequired();
+
+            modelBuilder.Entity<CardDetail>(entity =>
+            {
+                entity.Property(e => e.ExpirationDate)
+                    .HasMaxLength(10); // Adjust the length based on your date format
+            });
         }
     }
 }
