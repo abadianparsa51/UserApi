@@ -102,6 +102,7 @@ namespace UserApi.Controllers
 
                     // Generate JWT token
                     var token = GenerateJwtToken(existUser);
+
                     // Return login response with user ID
                     var loginResponse = new LoginRequestResponse()
                     {
@@ -111,13 +112,6 @@ namespace UserApi.Controllers
                     };
 
                     return Ok(loginResponse);
-
-                    return Ok(new LoginRequestResponse()
-                    {
-                        Token = token,
-                        
-                        Result = true,
-                    });
                 }
 
                 return BadRequest("Invalid email or password.");
@@ -127,31 +121,23 @@ namespace UserApi.Controllers
         }
 
 
-
-        private string GenerateJwtToken(IdentityUser user)
+        private string GenerateJwtToken(ApplicationUser user)
         {
-            var jwtTokenHandler = new JwtSecurityTokenHandler();
-
+            var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_jwtConfig.Secret);
 
-            var tokenDescription = new SecurityTokenDescriptor()
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                  new Claim("Id",user.Id ?? string.Empty),
-                  new Claim(JwtRegisteredClaimNames.Sub ,user.Email??String.Empty),
-                  new Claim(JwtRegisteredClaimNames.Email ,user.Email ?? String.Empty),
-                  new Claim(JwtRegisteredClaimNames.Jti , Guid.NewGuid().ToString())
-
+                    new Claim(ClaimTypes.NameIdentifier, user.Id)
                 }),
-                Expires = DateTime.UtcNow.AddHours(4),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
-                SecurityAlgorithms.HmacSha256
-                )
+                Expires = DateTime.UtcNow.AddDays(_jwtConfig.ExpiryInDays),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
-            var token = jwtTokenHandler.CreateToken(tokenDescription);
-            var jwtToken = jwtTokenHandler.WriteToken(token);
-            return jwtToken;
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
 
         [HttpGet]

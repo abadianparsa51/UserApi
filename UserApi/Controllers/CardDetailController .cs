@@ -16,7 +16,7 @@ using UserApi.Models.DTOs;
 
 namespace UserApi.Controllers
 {
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+   [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     [Route("api/[controller]")]
     public class CardDetailController : ControllerBase
@@ -25,7 +25,7 @@ namespace UserApi.Controllers
         private readonly ApiDbContext _context;
         private readonly ILogger<CardDetailController> _logger;
 
-        public CardDetailController(UserManager<ApplicationUser> userManager, 
+        public CardDetailController(UserManager<ApplicationUser> userManager,
                                     ApiDbContext context,
                                     ILogger<CardDetailController> logger)
         {
@@ -34,51 +34,20 @@ namespace UserApi.Controllers
             _logger = logger;
         }
 
-        [HttpPost("add")]
-        public async Task<IActionResult> AddCard([FromBody] CardDetailDto cardDetailDto)
-        {
-            try
-            {
-                var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
-                var user = await _userManager.FindByEmailAsync(userEmail);
-
-                if (user == null)
-                    return BadRequest("User not found.");
-
-                var card = new CardDetail
-                {
-                    CardNumber = cardDetailDto.CardNumber,
-                    ExpirationDate = cardDetailDto.ExpirationDate,
-                    UserId = user.Id
-                };
-
-                _context.CardDetails.Add(card);
-                await _context.SaveChangesAsync();
-
-                // After adding the card successfully, retrieve all cards for the user
-                var userCards = await GetUserCards(user.Id);
-
-                // Create a custom response object containing the user ID and card details
-                var response = new
-                {
-                    UserId = user.Id,
-                    Cards = userCards
-                };
-
-                return Ok(response);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "An error occurred while adding a card.");
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error.");
-            }
-        }
-
         [HttpGet("user-cards")]
-        public async Task<ActionResult<IEnumerable<CardDetail>>> GetUserCards(string userId)
+        public async Task<ActionResult<IEnumerable<CardDetail>>> GetUserCards()
         {
             try
             {
+                // Extract user ID from the JWT token
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+                if (userId == null)
+                {
+                    return BadRequest("User ID not found in token.");
+                }
+
+                // Query database for card details of the logged-in user
                 var userCards = await _context.CardDetails
                     .Where(c => c.UserId == userId)
                     .ToListAsync();
@@ -91,6 +60,41 @@ namespace UserApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error.");
             }
         }
+
+
+        [HttpPost("add")]
+        public async Task<IActionResult> AddCard([FromBody] CardDetailDto cardDetailDto)
+        {
+            try
+            {
+                // Retrieve user ID from the token
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+                if (userId == null)
+                    return BadRequest("User ID not found in token.");
+
+                // Create a new CardDetail object
+                var card = new CardDetail
+                {
+                    CardNumber = cardDetailDto.CardNumber,
+                    ExpirationDate = cardDetailDto.ExpirationDate,
+                    UserId = userId // Assign the user ID retrieved from the token
+                };
+
+                // Add the new card to the context
+                _context.CardDetails.Add(card);
+                await _context.SaveChangesAsync();
+
+                return Ok("Card added successfully.");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while adding a card.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error.");
+            }
+        }
+
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCard(int id)
         {
@@ -112,6 +116,7 @@ namespace UserApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error.");
             }
         }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCard(int id, [FromBody] CardDetailDto updatedCardDto)
         {
@@ -136,7 +141,5 @@ namespace UserApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error.");
             }
         }
-
-
     }
 }
