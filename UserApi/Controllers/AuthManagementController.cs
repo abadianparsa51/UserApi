@@ -58,11 +58,10 @@ namespace UserApi.Controllers
 
             // Attempt to create the user
             var isCreated = await _userManager.CreateAsync(newUser, requestDto.Password);
-
             if (isCreated.Succeeded)
             {
                 // If the user is created successfully, generate a JWT token
-                var token = GenerateJwtToken(newUser);
+                var token = GenerateJwtToken(newUser, requestDto.Email);
 
                 // Retrieve the user ID
                 var userId = newUser.Id;
@@ -72,7 +71,7 @@ namespace UserApi.Controllers
                 {
                     Result = true,
                     Token = token,
-              
+                    UserId = userId // Assuming there's a property for UserId in the response object
                 };
 
                 return Ok(response);
@@ -97,18 +96,16 @@ namespace UserApi.Controllers
                 var isPasswordValid = await _userManager.CheckPasswordAsync(existUser, requestDto.Password);
                 if (isPasswordValid)
                 {
-                    // Retrieve the user ID
-                    var userId = existUser.Id;
+                    // Generate JWT token with email claim
+                    var token = GenerateJwtToken(existUser, existUser.Email);
 
-                    // Generate JWT token
-                    var token = GenerateJwtToken(existUser);
-
-                    // Return login response with user ID
-                    var loginResponse = new LoginRequestResponse()
+                    // Return login response with token, user ID, and email
+                    var loginResponse = new LoginRequestResponse
                     {
                         Token = token,
-                        UserId = userId,
-                        Result = true,
+                        UserId = existUser.Id,
+                        Email = existUser.Email,
+                        Result = true
                     };
 
                     return Ok(loginResponse);
@@ -121,17 +118,19 @@ namespace UserApi.Controllers
         }
 
 
-        private string GenerateJwtToken(ApplicationUser user)
+
+        private string GenerateJwtToken(ApplicationUser user, string userEmail)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_jwtConfig.Secret);
+            var key = Encoding.ASCII.GetBytes(_jwtConfig.Secret); // Assuming _jwtConfig.Secret is a property of type string
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                    new Claim(ClaimTypes.NameIdentifier, user.Id)
-                }),
+            new Claim(ClaimTypes.NameIdentifier, user.Id),
+            new Claim(ClaimTypes.Email, userEmail) // Add email claim
+        }),
                 Expires = DateTime.UtcNow.AddDays(_jwtConfig.ExpiryInDays),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
@@ -140,29 +139,6 @@ namespace UserApi.Controllers
             return tokenHandler.WriteToken(token);
         }
 
-        [HttpGet]
-        [Route("UserDetails")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public IActionResult GetUserDetails()
-        {
-            // Get user details from claims
-            var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
 
-
-            if (userEmail != null)
-            {
-                var userDetails = new UserLoginRequestDto // Assuming you have a UserDetails model class
-                {
-                    Email = userEmail,
-
-                };
-
-                return Ok(userDetails);
-            }
-            else
-            {
-                return BadRequest("User details not found.");
-            }
-        }
     }
 }

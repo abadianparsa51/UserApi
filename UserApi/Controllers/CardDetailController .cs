@@ -39,17 +39,17 @@ namespace UserApi.Controllers
         {
             try
             {
-                // Extract user ID from the JWT token
-                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-                if (userId == null)
+                // Extract user email from the JWT token
+                var userEmailClaim = User.FindFirst(ClaimTypes.Email);
+                if (userEmailClaim == null || string.IsNullOrEmpty(userEmailClaim.Value))
                 {
-                    return BadRequest("User ID not found in token.");
+                    return BadRequest("User email not found in token.");
                 }
+                var userEmail = userEmailClaim.Value;
 
-                // Query database for card details of the logged-in user
+                // Query database for card details of the logged-in user using the email
                 var userCards = await _context.CardDetails
-                    .Where(c => c.UserId == userId)
+                    .Where(c => c.User.Email == userEmail)
                     .ToListAsync();
 
                 return Ok(userCards);
@@ -60,6 +60,8 @@ namespace UserApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error.");
             }
         }
+
+
 
 
         [HttpPost("add")]

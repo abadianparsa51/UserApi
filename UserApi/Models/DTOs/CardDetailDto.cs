@@ -7,5 +7,7 @@ namespace UserApi.Models.DTOs
         public string CardNumber { get; set; } = "";
         [Required]
         public string ExpirationDate { get; set; } = "";
+        [Required]
+        public string Email { get; set; } = "";
     }
 }
