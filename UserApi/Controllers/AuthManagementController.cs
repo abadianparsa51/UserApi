@@ -59,7 +59,7 @@ namespace UserApi.Controllers
             // Attempt to create the user
             var isCreated = await _userManager.CreateAsync(newUser, requestDto.Password);
             if (isCreated.Succeeded)
-            {
+            {   
                 // If the user is created successfully, generate a JWT token
                 var token = GenerateJwtToken(newUser, requestDto.Email);
 

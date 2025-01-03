@@ -1,0 +1,413 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\migrations\\20240210102159_addcardentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\migrations\\20240210102159_addcardentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\migrations\\20250102103308_addcardprefixes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\migrations\\20250102103308_addcardprefixes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\models\\carddetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\models\\carddetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\models\\dtos\\carddetaildto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\models\\dtos\\carddetaildto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\controllers\\carddetailcontroller .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\controllers\\carddetailcontroller .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\migrations\\apidbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\migrations\\apidbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\models\\dtos\\checkcardprefixrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\models\\dtos\\checkcardprefixrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\models\\cardprefix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\models\\cardprefix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\data\\apidbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\data\\apidbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\configurations\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\configurations\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\migrations\\20240210100209_apidbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\migrations\\20240210100209_apidbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\models\\authresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\models\\authresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\models\\applicationuser .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\models\\applicationuser .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\models\\loginrequestresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\models\\loginrequestresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\models\\registrationrequestresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\models\\registrationrequestresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\userapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\userapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\controllers\\authmanagementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\controllers\\authmanagementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\configurations\\jwtconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\configurations\\jwtconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|c:\\users\\parsa\\desktop\\project\\learning\\userapi\\userapi\\models\\usercardresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3A0AA6C6-5197-4C78-B369-846C56CC6794}|UserApi\\UserApi.csproj|solutionrelative:userapi\\models\\usercardresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0174dea2-fdbe-4ef1-8f99-c0beae78880f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CardDetailController .cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Controllers\\CardDetailController .cs",
+              "RelativeDocumentMoniker": "UserApi\\Controllers\\CardDetailController .cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Controllers\\CardDetailController .cs",
+              "RelativeToolTip": "UserApi\\Controllers\\CardDetailController .cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAowAoAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T08:19:39.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CardDetailDto.cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Models\\DTOs\\CardDetailDto.cs",
+              "RelativeDocumentMoniker": "UserApi\\Models\\DTOs\\CardDetailDto.cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Models\\DTOs\\CardDetailDto.cs",
+              "RelativeToolTip": "UserApi\\Models\\DTOs\\CardDetailDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T09:53:19.799Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CardDetail.cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Models\\CardDetail.cs",
+              "RelativeDocumentMoniker": "UserApi\\Models\\CardDetail.cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Models\\CardDetail.cs",
+              "RelativeToolTip": "UserApi\\Models\\CardDetail.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T16:41:20.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "20250102103308_AddCardPrefixes.cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Migrations\\20250102103308_AddCardPrefixes.cs",
+              "RelativeDocumentMoniker": "UserApi\\Migrations\\20250102103308_AddCardPrefixes.cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Migrations\\20250102103308_AddCardPrefixes.cs",
+              "RelativeToolTip": "UserApi\\Migrations\\20250102103308_AddCardPrefixes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T10:39:47.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20240210102159_AddCardEntity.cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Migrations\\20240210102159_AddCardEntity.cs",
+              "RelativeDocumentMoniker": "UserApi\\Migrations\\20240210102159_AddCardEntity.cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Migrations\\20240210102159_AddCardEntity.cs",
+              "RelativeToolTip": "UserApi\\Migrations\\20240210102159_AddCardEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T16:41:34.216Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CardController.cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Controllers\\CardController.cs",
+              "RelativeDocumentMoniker": "UserApi\\Controllers\\CardController.cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Controllers\\CardController.cs",
+              "RelativeToolTip": "UserApi\\Controllers\\CardController.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T10:37:53.051Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ApiDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Migrations\\ApiDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "UserApi\\Migrations\\ApiDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Migrations\\ApiDbContextModelSnapshot.cs",
+              "RelativeToolTip": "UserApi\\Migrations\\ApiDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAPIAAAAAAAAAAAAAAPwAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T16:10:14.517Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CardPrefix.cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Models\\CardPrefix.cs",
+              "RelativeDocumentMoniker": "UserApi\\Models\\CardPrefix.cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Models\\CardPrefix.cs",
+              "RelativeToolTip": "UserApi\\Models\\CardPrefix.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T09:57:06.321Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CheckCardPrefixRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Models\\DTOs\\CheckCardPrefixRequest.cs",
+              "RelativeDocumentMoniker": "UserApi\\Models\\DTOs\\CheckCardPrefixRequest.cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Models\\DTOs\\CheckCardPrefixRequest.cs",
+              "RelativeToolTip": "UserApi\\Models\\DTOs\\CheckCardPrefixRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-02T09:58:02.1Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ApiDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Data\\ApiDbContext.cs",
+              "RelativeDocumentMoniker": "UserApi\\Data\\ApiDbContext.cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Data\\ApiDbContext.cs",
+              "RelativeToolTip": "UserApi\\Data\\ApiDbContext.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAIAwwBEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T16:11:24.72Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Startup.cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Configurations\\Startup.cs",
+              "RelativeDocumentMoniker": "UserApi\\Configurations\\Startup.cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Configurations\\Startup.cs",
+              "RelativeToolTip": "UserApi\\Configurations\\Startup.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAvwFkAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T16:10:59.01Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Program.cs",
+              "RelativeDocumentMoniker": "UserApi\\Program.cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Program.cs",
+              "RelativeToolTip": "UserApi\\Program.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAgwBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T16:10:46.943Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "UserApi\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Properties\\launchSettings.json",
+              "RelativeToolTip": "UserApi\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACgAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-12-29T16:10:54.186Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "20240210100209_apiDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Migrations\\20240210100209_apiDbContext.cs",
+              "RelativeDocumentMoniker": "UserApi\\Migrations\\20240210100209_apiDbContext.cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Migrations\\20240210100209_apiDbContext.cs",
+              "RelativeToolTip": "UserApi\\Migrations\\20240210100209_apiDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T16:10:23.986Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ApplicationUser .cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Models\\ApplicationUser .cs",
+              "RelativeDocumentMoniker": "UserApi\\Models\\ApplicationUser .cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Models\\ApplicationUser .cs",
+              "RelativeToolTip": "UserApi\\Models\\ApplicationUser .cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T11:24:32.241Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "LoginRequestResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Models\\LoginRequestResponse.cs",
+              "RelativeDocumentMoniker": "UserApi\\Models\\LoginRequestResponse.cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Models\\LoginRequestResponse.cs",
+              "RelativeToolTip": "UserApi\\Models\\LoginRequestResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T11:26:50.617Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AuthResult.cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Models\\AuthResult.cs",
+              "RelativeDocumentMoniker": "UserApi\\Models\\AuthResult.cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Models\\AuthResult.cs",
+              "RelativeToolTip": "UserApi\\Models\\AuthResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T16:41:21.804Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RegistrationRequestResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Models\\RegistrationRequestResponse.cs",
+              "RelativeDocumentMoniker": "UserApi\\Models\\RegistrationRequestResponse.cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Models\\RegistrationRequestResponse.cs",
+              "RelativeToolTip": "UserApi\\Models\\RegistrationRequestResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T16:41:26.523Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "AuthManagementController.cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Controllers\\AuthManagementController.cs",
+              "RelativeDocumentMoniker": "UserApi\\Controllers\\AuthManagementController.cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Controllers\\AuthManagementController.cs",
+              "RelativeToolTip": "UserApi\\Controllers\\AuthManagementController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAA8AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T11:24:36.436Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "UserApi",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\UserApi.csproj",
+              "RelativeDocumentMoniker": "UserApi\\UserApi.csproj",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\UserApi.csproj",
+              "RelativeToolTip": "UserApi\\UserApi.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-12-29T16:10:51.241Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\appsettings.json",
+              "RelativeDocumentMoniker": "UserApi\\appsettings.json",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\appsettings.json",
+              "RelativeToolTip": "UserApi\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-12-30T12:12:28.44Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "JwtConfig.cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Configurations\\JwtConfig.cs",
+              "RelativeDocumentMoniker": "UserApi\\Configurations\\JwtConfig.cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Configurations\\JwtConfig.cs",
+              "RelativeToolTip": "UserApi\\Configurations\\JwtConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T17:14:28.978Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "UserCardResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Models\\UserCardResponse.cs",
+              "RelativeDocumentMoniker": "UserApi\\Models\\UserCardResponse.cs",
+              "ToolTip": "C:\\Users\\Parsa\\Desktop\\project\\learning\\UserApi\\UserApi\\Models\\UserCardResponse.cs",
+              "RelativeToolTip": "UserApi\\Models\\UserCardResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T16:41:29.563Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

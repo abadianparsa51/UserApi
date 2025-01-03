@@ -8,6 +8,10 @@ namespace UserApi.Data
     {
         
         public DbSet<CardDetail> CardDetails { get; set; }
+
+        public DbSet<CardPrefix> CardPrefixes { get; set; }
+
+
         public ApiDbContext(DbContextOptions<ApiDbContext> options)
             : base(options)
         {
@@ -28,6 +32,13 @@ namespace UserApi.Data
                 entity.Property(e => e.ExpirationDate)
                     .HasMaxLength(10); // Adjust the length based on your date format
             });
+            // افزودن داده‌های پیش‌شماره کارت‌های بانکی
+            modelBuilder.Entity<CardPrefix>().HasData(
+                new CardPrefix { Id = 1, Prefix = "603799", BankName = "بانک ملی ایران" },
+                new CardPrefix { Id = 2, Prefix = "589210", BankName = "بانک سپه" },
+                new CardPrefix { Id = 3, Prefix = "627412", BankName = "بانک اقتصاد نوین" },
+                new CardPrefix { Id = 4, Prefix = "621986", BankName = "بانک سامان" }
+            );
         }
     }
 }

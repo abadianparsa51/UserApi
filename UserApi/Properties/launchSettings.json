@@ -2,14 +2,14 @@
   "profiles": {
     "http": {
       "commandName": "Project",
-      "workingDirectory": "C:\\Users\\Parsa\\Desktop\\learning\\UserApi\\UserApi",
+      //"workingDirectory": "C:\\Users\\Parsa\\Desktop\\learning\\UserApi\\UserApi",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5224"
+      "applicationUrl": "http://0.0.0.0:5224"
     },
     "https": {
       "commandName": "Project",
@@ -19,7 +19,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7020;http://localhost:5224"
+      "applicationUrl": "https://0.0.0.0:7020;http://0.0.0.0:5224"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -35,7 +35,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:62444",
+      "applicationUrl": "http://0.0.0.0:62444",
       "sslPort": 44322
     }
   }

@@ -238,7 +238,8 @@ namespace UserApi.Migrations
 
                     b.Property<string>("ExpirationDate")
                         .IsRequired()
-                        .HasColumnType("nvarchar(5)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -249,6 +250,53 @@ namespace UserApi.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("CardDetails");
+                });
+
+            modelBuilder.Entity("UserApi.Models.CardPrefix", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("BankName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Prefix")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CardPrefixes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BankName = "بانک ملی ایران",
+                            Prefix = "603799"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BankName = "بانک سپه",
+                            Prefix = "589210"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            BankName = "بانک اقتصاد نوین",
+                            Prefix = "627412"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            BankName = "بانک سامان",
+                            Prefix = "621986"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
