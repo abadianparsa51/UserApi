@@ -98,6 +98,37 @@
         }
       }
     },
+    "/api/CardDetail/add": {
+      "post": {
+        "tags": [
+          "CardDetail"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardDetailDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardDetailDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardDetailDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/CardDetail/user-cards": {
       "get": {
         "tags": [
@@ -136,38 +167,7 @@
         }
       }
     },
-    "/api/CardDetail/add": {
-      "post": {
-        "tags": [
-          "CardDetail"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CardDetailDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CardDetailDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CardDetailDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/CardDetail/{id}": {
+    "/api/CardDetail/delete/{id}": {
       "delete": {
         "tags": [
           "CardDetail"
@@ -189,7 +189,9 @@
             "description": "Success"
           }
         }
-      },
+      }
+    },
+    "/api/CardDetail/{id}": {
       "put": {
         "tags": [
           "CardDetail"
@@ -394,11 +396,14 @@
         "additionalProperties": false
       },
       "CheckCardPrefixRequest": {
+        "required": [
+          "cardNumber"
+        ],
         "type": "object",
         "properties": {
           "cardNumber": {
-            "type": "string",
-            "nullable": true
+            "minLength": 6,
+            "type": "string"
           }
         },
         "additionalProperties": false

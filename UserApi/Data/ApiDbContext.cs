@@ -33,6 +33,9 @@ namespace UserApi.Data
                     .HasMaxLength(10); // Adjust the length based on your date format
             });
             // افزودن داده‌های پیش‌شماره کارت‌های بانکی
+            modelBuilder.Entity<CardPrefix>()
+                .HasIndex(c => c.Prefix)
+                    .IsUnique();
             modelBuilder.Entity<CardPrefix>().HasData(
                 new CardPrefix { Id = 1, Prefix = "603799", BankName = "بانک ملی ایران" },
                 new CardPrefix { Id = 2, Prefix = "589210", BankName = "بانک سپه" },

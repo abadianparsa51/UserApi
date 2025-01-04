@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Threading.Tasks;
 using UserApi.Data;
-using UserApi.Models;
 using UserApi.Models.DTOs;
 
 namespace UserApi.Controllers
@@ -19,30 +16,49 @@ namespace UserApi.Controllers
             _context = context;
         }
 
-        // POST: api/Card/CheckPrefix
+        // متد بررسی پیش‌شماره کارت
         [HttpPost("CheckPrefix")]
         public async Task<IActionResult> CheckCardPrefix([FromBody] CheckCardPrefixRequest request)
         {
-            if (string.IsNullOrEmpty(request?.CardNumber))
+            if (!ModelState.IsValid)
             {
-                return BadRequest("Card number is required.");
+                return BadRequest(new CheckCardPrefixResponseDto
+                {
+                    IsValid = false,
+                    Message = "Invalid request. Card number must be at least 6 digits."
+                });
             }
 
-            // گرفتن پیش‌شماره از شماره کارت
-            var prefix = request.CardNumber.Substring(0, 4);  // فرض کنیم پیش‌شماره ۴ رقم اول باشد
+            var prefix = request.CardNumber.Substring(0, 6);
 
-            // بررسی اینکه آیا پیش‌شماره موجود در دیتابیس هست یا خیر
-            var exists = await _context.CardPrefixes
-                .AnyAsync(cp => cp.Prefix == prefix);
+            var exists = await _context.CardPrefixes.AnyAsync(cp => cp.Prefix == prefix);
 
             if (exists)
             {
-                return Ok("Valid card prefix.");
+                return Ok(new CheckCardPrefixResponseDto
+                {
+                    IsValid = true,
+                    Message = "Valid card prefix."
+                });
             }
             else
             {
-                return BadRequest("Invalid card prefix.");
+                _logger.LogWarning("Invalid card prefix: {Prefix}", prefix);
+                return NotFound(new CheckCardPrefixResponseDto
+                {
+                    IsValid = false,
+                    Message = "Invalid card prefix."
+                });
             }
+        }
+
+    }
+
+    internal class _logger
+    {
+        internal static void LogWarning(string v, string prefix)
+        {
+            throw new NotImplementedException();
         }
     }
 }

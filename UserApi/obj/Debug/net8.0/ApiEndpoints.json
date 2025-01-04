@@ -49,22 +49,6 @@
   },
   {
     "ContainingType": "UserApi.Controllers.CardDetailController",
-    "Method": "DeleteCard",
-    "RelativePath": "api/CardDetail/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "UserApi.Controllers.CardDetailController",
     "Method": "UpdateCard",
     "RelativePath": "api/CardDetail/{id}",
     "HttpMethod": "PUT",
@@ -95,6 +79,22 @@
       {
         "Name": "cardDetailDto",
         "Type": "UserApi.Models.DTOs.CardDetailDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserApi.Controllers.CardDetailController",
+    "Method": "DeleteCard",
+    "RelativePath": "api/CardDetail/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

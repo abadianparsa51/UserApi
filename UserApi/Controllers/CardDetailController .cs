@@ -33,6 +33,64 @@ namespace UserApi.Controllers
             _context = context;
             _logger = logger;
         }
+        [HttpPost("add")]
+        public async Task<IActionResult> AddCard([FromBody] CardDetailDto cardDetailDto)
+        {
+            try
+            {
+                // Retrieve user ID from the token
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+                if (userId == null)
+                    return BadRequest("User ID not found in token.");
+
+                if (string.IsNullOrEmpty(cardDetailDto.CardNumber) || cardDetailDto.CardNumber.Length < 6)
+                {
+                    return BadRequest("Card number is required and must be at least 6 digits.");
+                }
+
+                // Check for duplicate cards
+                var existingCard = await _context.CardDetails
+                    .AnyAsync(c => c.CardNumber == cardDetailDto.CardNumber && c.UserId == userId);
+
+                if (existingCard)
+                {
+                    _logger.LogWarning("Duplicate card attempt: {CardNumber} by user {UserId}", cardDetailDto.CardNumber, userId);
+                    return BadRequest("This card is already added.");
+                }
+
+                // Validate the card prefix
+                var prefix = cardDetailDto.CardNumber.Substring(0, 6);
+                var prefixExists = await _context.CardPrefixes.AnyAsync(cp => cp.Prefix == prefix);
+
+                if (!prefixExists)
+                {
+                    _logger.LogWarning("Invalid card prefix: {Prefix}", prefix);
+                    return BadRequest("Invalid card prefix.");
+                }
+
+                // Create a new CardDetail object
+                var card = new CardDetail
+                {
+                    CardNumber = cardDetailDto.CardNumber,
+                    ExpirationDate = cardDetailDto.ExpirationDate,
+                    UserId = userId // Assign the user ID retrieved from the token
+                };
+
+                // Add the new card to the context
+                _context.CardDetails.Add(card);
+                await _context.SaveChangesAsync();
+
+                return Ok(new { message = "Card added successfully." });
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while adding a card.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error.");
+            }
+        }
+
 
         [HttpGet("user-cards")]
         public async Task<ActionResult<IEnumerable<CardDetail>>> GetUserCards()
@@ -64,8 +122,9 @@ namespace UserApi.Controllers
 
 
 
-        [HttpPost("add")]
-        public async Task<IActionResult> AddCard([FromBody] CardDetailDto cardDetailDto)
+
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> DeleteCard(int id)
         {
             try
             {
@@ -75,42 +134,24 @@ namespace UserApi.Controllers
                 if (userId == null)
                     return BadRequest("User ID not found in token.");
 
-                // Create a new CardDetail object
-                var card = new CardDetail
-                {
-                    CardNumber = cardDetailDto.CardNumber,
-                    ExpirationDate = cardDetailDto.ExpirationDate,
-                    UserId = userId // Assign the user ID retrieved from the token
-                };
-
-                // Add the new card to the context
-                _context.CardDetails.Add(card);
-                await _context.SaveChangesAsync();
-
-                return Ok("Card added successfully.");
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "An error occurred while adding a card.");
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error.");
-            }
-        }
-
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCard(int id)
-        {
-            try
-            {
-                var card = await _context.CardDetails.FindAsync(id);
+                // Find the card to be deleted
+                var card = await _context.CardDetails
+                    .FirstOrDefaultAsync(c => c.Id == id && c.UserId == userId);
 
                 if (card == null)
+                {
+                    _logger.LogWarning("Card with ID {Id} not found for user {UserId}", id, userId);
                     return NotFound("Card not found.");
+                }
 
+                // Optionally, you can add a check for validation before deleting
+                // For example, you could ensure the card is not already deleted, expired, etc.
+
+                // Remove the card from the context
                 _context.CardDetails.Remove(card);
                 await _context.SaveChangesAsync();
 
-                return Ok("Card deleted successfully.");
+                return Ok(new { message = "Card deleted successfully." });
             }
             catch (Exception ex)
             {
