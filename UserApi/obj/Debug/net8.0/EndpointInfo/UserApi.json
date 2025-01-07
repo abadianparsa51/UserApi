@@ -191,7 +191,7 @@
         }
       }
     },
-    "/api/CardDetail/{id}": {
+    "/api/CardDetail/edit/{id}": {
       "put": {
         "tags": [
           "CardDetail"

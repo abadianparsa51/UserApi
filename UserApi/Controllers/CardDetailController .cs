@@ -160,7 +160,7 @@ namespace UserApi.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("edit/{id}")]
         public async Task<IActionResult> UpdateCard(int id, [FromBody] CardDetailDto updatedCardDto)
         {
             try
@@ -168,7 +168,7 @@ namespace UserApi.Controllers
                 var card = await _context.CardDetails.FindAsync(id);
 
                 if (card == null)
-                    return NotFound("Card not found.");
+                    return NotFound(new { message = "Card not found." });
 
                 card.CardNumber = updatedCardDto.CardNumber;
                 card.ExpirationDate = updatedCardDto.ExpirationDate;
@@ -176,13 +176,14 @@ namespace UserApi.Controllers
                 _context.CardDetails.Update(card);
                 await _context.SaveChangesAsync();
 
-                return Ok("Card updated successfully.");
+                return Ok(new { message = "Card updated successfully.", card });
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while updating the card.");
-                return StatusCode(StatusCodes.Status500InternalServerError, "Internal server error.");
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Internal server error." });
             }
         }
+
     }
 }

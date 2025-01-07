@@ -49,27 +49,6 @@
   },
   {
     "ContainingType": "UserApi.Controllers.CardDetailController",
-    "Method": "UpdateCard",
-    "RelativePath": "api/CardDetail/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "updatedCardDto",
-        "Type": "UserApi.Models.DTOs.CardDetailDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "UserApi.Controllers.CardDetailController",
     "Method": "AddCard",
     "RelativePath": "api/CardDetail/add",
     "HttpMethod": "POST",
@@ -95,6 +74,27 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserApi.Controllers.CardDetailController",
+    "Method": "UpdateCard",
+    "RelativePath": "api/CardDetail/edit/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedCardDto",
+        "Type": "UserApi.Models.DTOs.CardDetailDto",
         "IsRequired": true
       }
     ],
