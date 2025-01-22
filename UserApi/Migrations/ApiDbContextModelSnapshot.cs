@@ -22,6 +22,44 @@ namespace UserApi.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Contact", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("DestinationCardNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(16)");
+
+                    b.Property<string>("Mail")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Contacts");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -102,12 +140,10 @@ namespace UserApi.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -144,12 +180,10 @@ namespace UserApi.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -157,6 +191,63 @@ namespace UserApi.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("TransactionLog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("CardDetailId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CardDetailId1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ContactId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DestinationCardNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Fee")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("SourceCardNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StatusMessage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("TransactionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TransactionId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CardDetailId");
+
+                    b.HasIndex("CardDetailId1");
+
+                    b.HasIndex("ContactId");
+
+                    b.ToTable("TransactionLogs");
                 });
 
             modelBuilder.Entity("UserApi.Models.ApplicationUser", b =>
@@ -224,6 +315,91 @@ namespace UserApi.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("UserApi.Models.Bank", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("SwiftCode")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Banks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "بانک ملی ایران",
+                            SwiftCode = "BKAB12"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "بانک سپه",
+                            SwiftCode = "BKB123"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "بانک اقتصاد نوین",
+                            SwiftCode = "BKEN34"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "بانک سامان",
+                            SwiftCode = "BKSAM56"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "بانک ملت",
+                            SwiftCode = "BKML78"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "بانک صادرات ایران",
+                            SwiftCode = "BKEX90"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "بانک کشاورزی",
+                            SwiftCode = "BKAG12"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "بانک مسکن",
+                            SwiftCode = "BKHS34"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "بانک پاسارگاد",
+                            SwiftCode = "BKPS56"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "بانک پارسیان",
+                            SwiftCode = "BKPR78"
+                        });
+                });
+
             modelBuilder.Entity("UserApi.Models.CardDetail", b =>
                 {
                     b.Property<int>("Id")
@@ -232,9 +408,23 @@ namespace UserApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<decimal>("Balance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("BankId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CVV2")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
                     b.Property<string>("CardNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(16)");
+
+                    b.Property<int>("ContactId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ExpirationDate")
                         .IsRequired()
@@ -246,6 +436,10 @@ namespace UserApi.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BankId");
+
+                    b.HasIndex("ContactId");
 
                     b.HasIndex("UserId");
 
@@ -260,15 +454,23 @@ namespace UserApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("BankId")
+                        .HasColumnType("int");
+
                     b.Property<string>("BankName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Prefix")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BankId");
+
+                    b.HasIndex("Prefix")
+                        .IsUnique();
 
                     b.ToTable("CardPrefixes");
 
@@ -276,27 +478,143 @@ namespace UserApi.Migrations
                         new
                         {
                             Id = 1,
+                            BankId = 1,
                             BankName = "بانک ملی ایران",
                             Prefix = "603799"
                         },
                         new
                         {
                             Id = 2,
+                            BankId = 2,
                             BankName = "بانک سپه",
                             Prefix = "589210"
                         },
                         new
                         {
                             Id = 3,
+                            BankId = 3,
                             BankName = "بانک اقتصاد نوین",
                             Prefix = "627412"
                         },
                         new
                         {
                             Id = 4,
+                            BankId = 4,
                             BankName = "بانک سامان",
                             Prefix = "621986"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            BankId = 5,
+                            BankName = "بانک ملت",
+                            Prefix = "610433"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            BankId = 6,
+                            BankName = "بانک صادرات ایران",
+                            Prefix = "603769"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            BankId = 7,
+                            BankName = "بانک کشاورزی",
+                            Prefix = "639217"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            BankId = 8,
+                            BankName = "بانک مسکن",
+                            Prefix = "628023"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            BankId = 9,
+                            BankName = "بانک پاسارگاد",
+                            Prefix = "502229"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            BankId = 10,
+                            BankName = "بانک پارسیان",
+                            Prefix = "622106"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            BankId = 9,
+                            BankName = "بانک پاسارگاد",
+                            Prefix = "639347"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            BankId = 10,
+                            BankName = "بانک پارسیان",
+                            Prefix = "627884"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            BankId = 6,
+                            BankName = "بانک ایران‌زمین",
+                            Prefix = "505785"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            BankId = 8,
+                            BankName = "بانک قرض‌الحسنه مهر ایران",
+                            Prefix = "606373"
                         });
+                });
+
+            modelBuilder.Entity("UserApi.Models.Fee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DestinationCardNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("FeeAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("SourceCardNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TransactionId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Fees");
+                });
+
+            modelBuilder.Entity("Contact", b =>
+                {
+                    b.HasOne("UserApi.Models.ApplicationUser", "User")
+                        .WithMany("Contacts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -350,20 +668,91 @@ namespace UserApi.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("TransactionLog", b =>
+                {
+                    b.HasOne("UserApi.Models.CardDetail", "CardDetail")
+                        .WithMany()
+                        .HasForeignKey("CardDetailId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("UserApi.Models.CardDetail", null)
+                        .WithMany("TransactionLogs")
+                        .HasForeignKey("CardDetailId1");
+
+                    b.HasOne("Contact", "Contact")
+                        .WithMany("TransactionLogs")
+                        .HasForeignKey("ContactId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("CardDetail");
+
+                    b.Navigation("Contact");
+                });
+
             modelBuilder.Entity("UserApi.Models.CardDetail", b =>
                 {
+                    b.HasOne("UserApi.Models.Bank", "Bank")
+                        .WithMany("CardDetails")
+                        .HasForeignKey("BankId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Contact", "Contact")
+                        .WithMany("Cards")
+                        .HasForeignKey("ContactId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("UserApi.Models.ApplicationUser", "User")
                         .WithMany("Cards")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Bank");
+
+                    b.Navigation("Contact");
+
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("UserApi.Models.CardPrefix", b =>
+                {
+                    b.HasOne("UserApi.Models.Bank", "Bank")
+                        .WithMany("CardPrefixes")
+                        .HasForeignKey("BankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Bank");
+                });
+
+            modelBuilder.Entity("Contact", b =>
+                {
+                    b.Navigation("Cards");
+
+                    b.Navigation("TransactionLogs");
                 });
 
             modelBuilder.Entity("UserApi.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Cards");
+
+                    b.Navigation("Contacts");
+                });
+
+            modelBuilder.Entity("UserApi.Models.Bank", b =>
+                {
+                    b.Navigation("CardDetails");
+
+                    b.Navigation("CardPrefixes");
+                });
+
+            modelBuilder.Entity("UserApi.Models.CardDetail", b =>
+                {
+                    b.Navigation("TransactionLogs");
                 });
 #pragma warning restore 612, 618
         }

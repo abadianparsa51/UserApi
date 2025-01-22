@@ -1,13 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
-namespace UserApi.Models.DTOs
+﻿namespace UserApi.DTOs
 {
-    public class CardDetailDto
+    public class CardDetailDTO
     {
-        [Required]
-        public string CardNumber { get; set; } = "";
-        [Required]
-        public string ExpirationDate { get; set; } = "";
-        [Required]
-        public string Email { get; set; } = "";
+        public int Id { get; set; }
+
+        public string CardNumber { get; set; }
+        public string ExpirationDate { get; set; }
+        public string CVV2 { get; set; }
+        public int BankId { get; set; }
+        public string BankName { get; set; }
     }
 }

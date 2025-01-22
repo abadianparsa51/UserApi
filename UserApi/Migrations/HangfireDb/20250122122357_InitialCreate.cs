@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace UserApi.Migrations
+namespace UserApi.Migrations.HangfireDb
 {
     /// <inheritdoc />
-    public partial class apiDbContext : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
